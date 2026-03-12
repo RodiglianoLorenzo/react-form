@@ -18,6 +18,11 @@ function App() {
     setArticoli([nuovoTitolo, ...articoli])
   }
 
+  function removeTitolo(indice) {
+    const rimozione = articoli.filter((art, index) => index != indice)
+    setArticoli(rimozione)
+  }
+
   return (
     <>
       <form onSubmit={handleSubmit}>
@@ -30,6 +35,9 @@ function App() {
           articoli.map((articolo, index) => (
             <li key={index}>
               {articolo}
+              <button onClick={() => removeTitolo(index)}>
+                ❌
+              </button>
             </li>
           ))
         }
