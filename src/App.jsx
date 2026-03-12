@@ -10,8 +10,21 @@ function App() {
     "Array e metodi utili in JavaScript"
   ])
 
+  const [nuovoTitolo, setNuovoTitolo] = useState("")
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    console.log(e);
+    setArticoli([nuovoTitolo, ...articoli])
+  }
+
   return (
     <>
+      <form onSubmit={handleSubmit}>
+        <input type="text" value={nuovoTitolo} onChange={(e) => setNuovoTitolo(e.target.value)} placeholder="scrivi il titolo del blog" />
+        <button type="submit">Submite</button>
+      </form>
+
       <ul>
         {
           articoli.map((articolo, index) => (
